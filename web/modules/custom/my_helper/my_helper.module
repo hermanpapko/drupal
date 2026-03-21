@@ -1,0 +1,13 @@
+<?php
+
+function my_helper_theme($existing, $type, $theme, $path) {
+  return [
+    'my_greeting_template' => [
+      'variables' => [
+        'user_name' => NULL,
+        'user_count' => NULL,
+        'greeting_text' => NULL,
+      ],
+    ],
+  ];
+}

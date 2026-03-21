@@ -1,0 +1,8 @@
+my_helper.hello:
+  path: '/hello/{name}'
+  defaults:
+    _controller: '\Drupal\my_helper\Controller\HelloController::content'
+    _title: 'My first page'
+    name: 'Guest'
+  requirements:
+    _permission: 'access content'

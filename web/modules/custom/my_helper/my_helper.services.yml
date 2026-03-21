@@ -1,0 +1,4 @@
+services:
+  my_helper.greeting_generator:
+    class: Drupal\my_helper\GreetingGenerator
+    arguments: ['@database']
