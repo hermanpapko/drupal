@@ -1,0 +1,4 @@
+greeting-stats:
+  css:
+    theme:
+      css/greeting.css: {}

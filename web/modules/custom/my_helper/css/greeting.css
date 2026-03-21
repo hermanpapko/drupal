@@ -1,0 +1,26 @@
+.cmf-greeting-card {
+  border: 3px solid #4a90e2;
+  padding: 25px;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  font-family: sans-serif;
+  max-width: 500px;
+  margin: 20px 0;
+}
+
+.cmf-greeting-card h2 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.cmf-greeting-card .user-name {
+  color: #4a90e2;
+}
+
+.cmf-greeting-card footer {
+  margin-top: 15px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  font-style: italic;
+  color: #777;
+}

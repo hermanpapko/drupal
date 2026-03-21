@@ -24,6 +24,7 @@ class HelloController extends ControllerBase
       '#greeting_text' => $data['greeting'],
       '#user_count' => $data['user_count'],
       '#user_name' => $data['user_name'],
+      '#visit_time' => $data['current_time'],
     ];
   }
 }
