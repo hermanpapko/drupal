@@ -5,4 +5,4 @@ my_helper.hello:
     _title: 'My first page'
     name: 'Guest'
   requirements:
-    _permission: 'access content'
+    _access: 'TRUE'

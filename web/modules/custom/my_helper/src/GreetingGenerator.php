@@ -17,7 +17,7 @@ class GreetingGenerator
 
   public function getGreetingData($name)
   {
-    $name = $this->account->getDisplayName();
+    $name = ($this->account->isAuthenticated()) ? $this->account->getDisplayName() : $name;
 
     $count = $this->database->select('users_field_data', 'u')
       ->condition('u.uid', 0, '>')
