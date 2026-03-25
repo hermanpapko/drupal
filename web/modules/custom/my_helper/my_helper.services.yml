@@ -1,4 +1,9 @@
 services:
+  logger.channel.my_helper:
+    parent: logger.channel_base
+    arguments:
+      - 'my_helper'
+
   my_helper.greeting_generator:
     class: Drupal\my_helper\GreetingGenerator
     arguments:
@@ -10,5 +15,5 @@ services:
   my_helper.login_handler:
     class: Drupal\my_helper\LoginHandler
     arguments:
-      - '@logger.factory'
+      - '@logger.channel.my_helper'
       - '@messenger'
