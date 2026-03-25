@@ -18,11 +18,5 @@ function my_helper_theme($existing, $type, $theme, $path) {
 //This hook is triggered every time a user logs into the site
 
 function my_helper_user_login(AccountInterface $account) {
-  \Drupal::logger('my_helper')->notice('User @name has logged in', [
-    '@name' => $account->getDisplayName(),
-  ]);
-
-  \Drupal::messenger()->addStatus(t('Welcome back, @name! Login tracked via Hook', [
-    '@name' => $account->getDisplayName(),
-  ]));
+  \Drupal::service('my_helper.login_handler')->onUserLogin($account);
 }

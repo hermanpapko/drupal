@@ -1,8 +1,14 @@
 services:
   my_helper.greeting_generator:
     class: Drupal\my_helper\GreetingGenerator
-    arguments: [
-      '@database',
-      '@current_user',
-    ]
+    arguments:
+      - '@database'
+      - '@current_user'
+      - '@datetime.time'
+      - '@date.formatter'
 
+  my_helper.login_handler:
+    class: Drupal\my_helper\LoginHandler
+    arguments:
+      - '@logger.factory'
+      - '@messenger'
