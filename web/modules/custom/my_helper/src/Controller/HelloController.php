@@ -29,6 +29,9 @@ final class HelloController extends ControllerBase {
       '#user_count' => $data['user_count'],
       '#user_name' => $data['user_name'],
       '#visit_time' => $data['current_time'],
+      '#cache' => [
+        'max-age' => 0,
+      ]
     ];
   }
 

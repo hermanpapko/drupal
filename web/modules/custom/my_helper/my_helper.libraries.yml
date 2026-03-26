@@ -2,3 +2,9 @@ greeting-stats:
   css:
     theme:
       css/greeting.css: {}
+  js:
+    js/greeting.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - core/jquery
