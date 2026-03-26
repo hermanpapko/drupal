@@ -17,7 +17,7 @@
   color: #4a90e2;
 }
 
-.cmf-greeting-card footer {
+.cmf-greeting-card div.footer {
   margin-top: 15px;
   border-top: 1px solid #ddd;
   padding-top: 10px;
