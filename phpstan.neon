@@ -1,0 +1,7 @@
+includes:
+    - vendor/mglaman/phpstan-drupal/extension.neon
+
+parameters:
+    level: 3
+    paths:
+        - web/modules/custom

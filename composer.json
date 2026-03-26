@@ -101,5 +101,13 @@
                 "      composer remove drupal/core-project-message"
             ]
         }
+    },
+    "require-dev": {
+        "mglaman/phpstan-drupal": "^2.0",
+        "phpstan/phpstan": "^2.1"
+    },
+
+    "scripts": {
+        "stan": "vendor/bin/phpstan analyse -c phpstan.neon"
     }
 }
