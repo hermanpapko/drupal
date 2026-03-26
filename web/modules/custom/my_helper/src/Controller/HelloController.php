@@ -1,22 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\my_helper\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\my_helper\GreetingGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class HelloController extends ControllerBase
-{
-  public function __construct(
-    protected GreetingGenerator $greetingGenerator) {}
+final class HelloController extends ControllerBase {
 
-  public static function create(ContainerInterface $container) {
+  public function __construct(
+    protected readonly GreetingGenerator $greetingGenerator
+  ) {}
+
+  /** @return static */
+  public static function create(ContainerInterface $container): static {
     return new static(
       $container->get('my_helper.greeting_generator')
     );
   }
-  public function content($name) {
+
+  public function content(string $name): array {
     $data = $this->greetingGenerator->getGreetingData($name);
 
     return [
@@ -27,4 +32,5 @@ class HelloController extends ControllerBase
       '#visit_time' => $data['current_time'],
     ];
   }
+
 }
