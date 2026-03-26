@@ -14,7 +14,6 @@ final class HelloController extends ControllerBase {
     protected readonly GreetingGenerator $greetingGenerator
   ) {}
 
-  /** @return static */
   public static function create(ContainerInterface $container): static {
     return new static(
       $container->get('my_helper.greeting_generator')

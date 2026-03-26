@@ -32,15 +32,11 @@ class GreetingGenerator {
 
     $hour = (int) $this->dateFormatter->format($current_timestamp, 'custom', 'G');
 
-    if ($hour < 12) {
-      $greeting = 'Good morning';
-    }
-    elseif ($hour < 18) {
-      $greeting = 'Good afternoon';
-    }
-    else {
-      $greeting = 'Good evening';
-    }
+    $greeting = match (true) {
+      $hour < 12 => 'Good Morning',
+      $hour < 18 => 'Good Afternoon',
+      default => 'Good Evening',
+    };
 
     return [
       'greeting' => $greeting,
