@@ -1,0 +1,7 @@
+services:
+  my_helper.commands:
+    class: \Drupal\my_helper\Commands\MyHelperCommands
+    arguments:
+      - '@my_helper.rm_importer'
+    tags:
+      - { name: drush.command }

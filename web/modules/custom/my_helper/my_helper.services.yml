@@ -17,3 +17,17 @@ services:
     arguments:
       - '@logger.channel.my_helper'
       - '@messenger'
+
+  my_helper.rm_api_client:
+    class: Drupal\my_helper\Service\RickAndMortyApiClient
+    arguments:
+      - '@http_client'
+      - '@logger.factory'
+
+  my_helper.rm_importer:
+    class: Drupal\my_helper\Service\RickAndMortyImporter
+    arguments:
+      - '@my_helper.rm_api_client'
+      - '@entity_type.manager'
+      - '@logger.factory'
+
