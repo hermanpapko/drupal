@@ -6,3 +6,11 @@ my_helper.hello:
     name: 'Guest'
   requirements:
     _access: 'TRUE'
+
+my_helper.settings:
+  path: '/admin/config/services/my_helper'
+  defaults:
+    _form: '\Drupal\my_helper\Form\RickAndMortySettingsForm'
+    _title: 'Rick and Morty API settings'
+  requirements:
+    _permission: 'administer site configuration'

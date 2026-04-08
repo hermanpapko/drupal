@@ -23,6 +23,7 @@ services:
     arguments:
       - '@http_client'
       - '@logger.factory'
+      - '@config.factory'
 
   my_helper.rm_importer:
     class: Drupal\my_helper\Service\RickAndMortyImporter
