@@ -1,0 +1,19 @@
+uuid: 2e5aa0c5-ed06-4f1d-b449-4ca9ef874aec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_species
+    - node.type.api_item
+id: node.api_item.field_species
+field_name: field_species
+entity_type: node
+bundle: api_item
+label: species
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

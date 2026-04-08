@@ -1,0 +1,47 @@
+uuid: dc7be41b-88c9-4d4f-b174-a1d16b7999eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.api_item.field_api_id
+    - field.field.node.api_item.field_species
+    - field.field.node.api_item.field_status
+    - node.type.api_item
+  module:
+    - user
+id: node.api_item.default
+targetEntityType: node
+bundle: api_item
+mode: default
+content:
+  field_api_id:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_species:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_status:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }
