@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.api_item.field_api_id
+    - field.field.node.api_item.field_api_image
     - field.field.node.api_item.field_species
     - field.field.node.api_item.field_status
     - node.type.api_item
   module:
+    - media_library
     - path
 id: node.api_item.default
 targetEntityType: node
@@ -26,6 +28,13 @@ content:
     region: content
     settings:
       placeholder: ''
+    third_party_settings: {  }
+  field_api_image:
+    type: media_library_widget
+    weight: 125
+    region: content
+    settings:
+      media_types: {  }
     third_party_settings: {  }
   field_species:
     type: string_textfield

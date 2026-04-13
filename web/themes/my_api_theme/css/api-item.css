@@ -1,0 +1,30 @@
+.api-card-wrapper {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.api-card-title {
+  font-size: 18px;
+  color: #333;
+}
+.api-card-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.api-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: #0071e3;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.api-button:hover {
+  background-color: #005bb5;
+}
