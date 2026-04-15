@@ -9,6 +9,9 @@ use Drupal\Core\Database\Connection;
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 
+/**
+ * Generates greeting messages.
+ */
 class GreetingGenerator {
 
   public function __construct(
@@ -18,6 +21,15 @@ class GreetingGenerator {
     protected readonly DateFormatterInterface $dateFormatter,
   ) {}
 
+  /**
+   * Generates greeting data.
+   *
+   * @param string $name
+   *   The name to use in the greeting.
+   *
+   * @return array
+   *   The greeting data.
+   */
   public function getGreetingData(string $name): array {
     $name = ($this->account->isAuthenticated()) ? $this->account->getDisplayName() : $name;
 
@@ -32,7 +44,7 @@ class GreetingGenerator {
 
     $hour = (int) $this->dateFormatter->format($current_timestamp, 'custom', 'G');
 
-    $greeting = match (true) {
+    $greeting = match (TRUE) {
       $hour < 12 => 'Good Morning',
       $hour < 18 => 'Good Afternoon',
       default => 'Good Evening',

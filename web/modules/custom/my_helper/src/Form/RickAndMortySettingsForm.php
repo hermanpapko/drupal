@@ -7,15 +7,28 @@ namespace Drupal\my_helper\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ * Configuration form for Rick and Morty API settings.
+ */
 class RickAndMortySettingsForm extends ConfigFormBase {
+
+  /**
+   * {@inheritdoc}
+   */
   protected function getEditableConfigNames(): array {
     return ['my_helper.settings'];
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getFormId(): string {
     return 'my_helper_settings_form';
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function buildForm(array $form, FormStateInterface $form_state): array {
     $form['status_filter'] = [
       '#type' => 'select',
@@ -33,6 +46,9 @@ class RickAndMortySettingsForm extends ConfigFormBase {
     return parent::buildForm($form, $form_state);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $this->config('my_helper.settings')
       ->set('status_filter', $form_state->getValue('status_filter'))
@@ -40,4 +56,5 @@ class RickAndMortySettingsForm extends ConfigFormBase {
 
     parent::submitForm($form, $form_state);
   }
+
 }

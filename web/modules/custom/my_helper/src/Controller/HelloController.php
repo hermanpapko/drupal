@@ -8,18 +8,33 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\my_helper\GreetingGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * Controller for the hello greeting page.
+ */
 final class HelloController extends ControllerBase {
 
   public function __construct(
-    protected readonly GreetingGenerator $greetingGenerator
+    protected readonly GreetingGenerator $greetingGenerator,
   ) {}
 
+  /**
+   * {@inheritdoc}
+   */
   public static function create(ContainerInterface $container): static {
     return new static(
       $container->get('my_helper.greeting_generator')
     );
   }
 
+  /**
+   * Returns a greeting message.
+   *
+   * @param string $name
+   *   The name to greet.
+   *
+   * @return array
+   *   A render array.
+   */
   public function content(string $name): array {
     $data = $this->greetingGenerator->getGreetingData($name);
 
@@ -31,7 +46,7 @@ final class HelloController extends ControllerBase {
       '#visit_time' => $data['current_time'],
       '#cache' => [
         'max-age' => 0,
-      ]
+      ],
     ];
   }
 

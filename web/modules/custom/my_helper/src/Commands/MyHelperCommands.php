@@ -8,14 +8,20 @@ use Drush\Commands\DrushCommands;
 use Drupal\my_helper\Service\RickAndMortyImporter;
 use Drush\Attributes as CLI;
 
+/**
+ * Drush commands for the My Helper module.
+ */
 final class MyHelperCommands extends DrushCommands {
 
   public function __construct(
-    private readonly RickAndMortyImporter $importer
+    private readonly RickAndMortyImporter $importer,
   ) {
     parent::__construct();
   }
 
+  /**
+   * Imports characters from the Rick and Morty API.
+   */
   #[CLI\Command(name: 'my_helper:import-rm', aliases: ['rm-import'])]
   #[CLI\Help(description: 'Starts importing characters from the Rick and Morty API.', synopsis: 'Import data')]
   #[CLI\Usage(name: 'my_helper:import-rm', description: 'Imports the first page of characters')]
@@ -23,10 +29,11 @@ final class MyHelperCommands extends DrushCommands {
     $this->output()
       ->writeln('<info>Starting character import (Page 1)...</info>');
 
-    // Run the import
+    // Run the import.
     $this->importer->import(1);
 
     $this->logger()
       ->success('Import completed! Check Drupal logs for details.');
   }
+
 }

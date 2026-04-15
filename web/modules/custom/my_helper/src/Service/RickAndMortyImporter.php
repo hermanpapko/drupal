@@ -8,10 +8,16 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
-use Drupal\file\FileInterface;
-use Drupal\media\MediaInterface;
 
+/**
+ * Imports character data from the Rick and Morty API.
+ */
 final class RickAndMortyImporter {
+  /**
+   * The logger channel.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelInterface
+   */
   private LoggerChannelInterface $logger;
 
   public function __construct(
@@ -23,6 +29,12 @@ final class RickAndMortyImporter {
     $this->logger = $loggerFactory->get('my_helper');
   }
 
+  /**
+   * Imports characters from the API.
+   *
+   * @param int $page
+   *   The page number to import.
+   */
   public function import(int $page = 1): void {
     $characters = $this->apiClient->getCharacters($page);
 
@@ -65,7 +77,8 @@ final class RickAndMortyImporter {
           $node->set($fieldName, $value);
         }
         $node->save();
-      } else {
+      }
+      else {
         $node = $nodeStorage->create($nodeData);
         $node->save();
       }
@@ -147,4 +160,5 @@ final class RickAndMortyImporter {
 
     return NULL;
   }
+
 }
