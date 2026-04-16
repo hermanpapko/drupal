@@ -1,0 +1,11 @@
+uuid: c0ae6129-5752-4037-9438-4cd2eccbd63f
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.api_item_image_mode
+label: 'Api Item Image Mode'
+description: null
+targetEntityType: media
+cache: true

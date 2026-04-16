@@ -1,0 +1,15 @@
+uuid: eb5f53a7-8e2d-4f9d-b923-0b33fbd317fa
+langcode: en
+status: true
+dependencies: {  }
+name: api_item_style
+label: 'Api Item Style'
+effects:
+  bfc3dfa5-80bb-42d8-b590-6247932b3959:
+    uuid: bfc3dfa5-80bb-42d8-b590-6247932b3959
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 300
+      height: 300
+      anchor: center-center

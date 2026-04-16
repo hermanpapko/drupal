@@ -1,0 +1,20 @@
+uuid: da008f0a-ce0f-4a15-8a0e-1a2c0dc0fdf7
+langcode: en
+status: true
+dependencies:
+  theme:
+    - my_api_theme
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: my_api_theme_page_title
+theme: my_api_theme
+region: sidebar_first
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

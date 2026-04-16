@@ -1,0 +1,23 @@
+uuid: 2041b03a-12e2-457b-b1ca-9fff61de16b1
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - my_api_theme
+_core:
+  default_config_hash: pbbed0hdqGDF-_QWVVTWRAwgDIotFuAvWH5mWUZu0fA
+id: my_api_theme_search_form_wide
+theme: my_api_theme
+region: secondary_menu
+weight: -5
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (wide)'
+  label_display: '0'
+  provider: search
+  page_id: null
+visibility: {  }

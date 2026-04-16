@@ -1,0 +1,22 @@
+uuid: b59a7a4e-7142-4fc8-ad20-d3c65857ead6
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - my_api_theme
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: my_api_theme_content
+theme: my_api_theme
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,32 @@
+uuid: 7e4b865e-7ed1-44bb-8b58-bfb8161e2e97
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.card
+    - field.field.node.api_item.field_api_id
+    - field.field.node.api_item.field_api_image
+    - field.field.node.api_item.field_species
+    - field.field.node.api_item.field_status
+    - node.type.api_item
+  module:
+    - user
+id: node.api_item.card
+targetEntityType: node
+bundle: api_item
+mode: card
+content:
+  field_api_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: api_item_image_mode
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_api_id: true
+  field_species: true
+  field_status: true
+  links: true
