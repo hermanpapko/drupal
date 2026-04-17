@@ -3,6 +3,9 @@
 declare (strict_types=1);
 
 use Drupal\Core\Session\AccountInterface;
+use Drupal\node\NodeInterface;
+use Drupal\user\Entity\Role;
+use Drupal\user\Entity\User;
 
 function my_helper_theme(array $existing, string $type, string $theme, string $path): array {
   return [
@@ -17,8 +20,15 @@ function my_helper_theme(array $existing, string $type, string $theme, string $p
   ];
 }
 
-//This hook is triggered every time a user logs into the site
-
+// Hook triggered when a user logs into the site.
 function my_helper_user_login(AccountInterface $account): void {
   \Drupal::service('my_helper.login_handler')->onUserLogin($account);
+}
+
+function my_helper_node_presave(NodeInterface $node): void {
+  \Drupal::service('my_helper.api_item_subscriber')->handlePresave($node);
+}
+
+function my_helper_node_delete(NodeInterface $node): void {
+  \Drupal::service('my_helper.api_item_subscriber')->handleDelete($node);
 }

@@ -33,3 +33,8 @@ services:
       - '@logger.factory'
       - '@file_system'
 
+  my_helper.api_item_subscriber:
+    class: Drupal\my_helper\EventSubscriber\ApiItemSubscriber
+    tags:
+      - { name: event_subscriber }
+

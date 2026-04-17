@@ -14,3 +14,11 @@ my_helper.settings:
     _title: 'Rick and Morty API settings'
   requirements:
     _permission: 'administer site configuration'
+
+my_helper.api_batch_form:
+  path: '/admin/config/services/rick-and-morty-batch'
+  defaults:
+    _form: '\Drupal\my_helper\Form\ApiBatchForm'
+    _title: 'ApiItems management'
+  requirements:
+    _permission: 'administer site configuration'

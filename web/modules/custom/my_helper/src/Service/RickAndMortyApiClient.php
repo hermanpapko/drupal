@@ -63,4 +63,25 @@ final class RickAndMortyApiClient {
     return [];
   }
 
+  /**
+   * @param array $ids
+   *
+   * @return array
+   */
+
+  public function getCharactersByIds(array $ids): array {
+    try {
+      $response = $this->httpClient->request('GET', self::API_URL . '/' . implode(',', $ids), [
+        'timeout' => 10,
+      ]);
+      $data = json_decode($response->getBody()->getContents(), TRUE, 512, JSON_THROW_ON_ERROR);
+
+      return isset($data['id']) ? [$data] : $data;
+    }
+    catch (\Throwable $exception) {
+      $this->logger->error($exception->getMessage());
+    }
+    return [];
+  }
+
 }
