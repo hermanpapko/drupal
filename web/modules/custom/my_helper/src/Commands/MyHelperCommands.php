@@ -29,7 +29,6 @@ final class MyHelperCommands extends DrushCommands {
     $this->output()
       ->writeln('<info>Starting character import (Page 1)...</info>');
 
-    // Run the import.
     $this->importer->import(1);
 
     $this->logger()

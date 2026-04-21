@@ -10,10 +10,10 @@ use Drupal\Core\Logger\LoggerChannelInterface;
 use GuzzleHttp\ClientInterface;
 
 /**
- * Client for the Rick and Morty API.
+ * Client for the Rick and Morty API using GraphQL.
  */
 final class RickAndMortyApiClient {
-  private const API_URL = 'https://rickandmortyapi.com/api/character';
+  private const GRAPHQL_URL = 'https://rickandmortyapi.com/graphql';
 
   /**
    * The logger channel.
@@ -43,19 +43,41 @@ final class RickAndMortyApiClient {
 
     $statusFilter = $this->configFactory->get('my_helper.settings')->get('status_filter');
 
-    $queryParams = ['page' => $page];
+    $query = '
+      query GetCharacters($page: Int, $filter: FilterCharacter) {
+        characters(page: $page, filter: $filter) {
+          results {
+            id
+            name
+            status
+            species
+            image
+          }
+        }
+      }
+    ';
+
+    $variables = ['page' => $page];
+
     if (!empty($statusFilter)) {
       $queryParams['status'] = $statusFilter;
     }
 
     try {
-      $response = $this->httpClient->request('GET', self::API_URL, [
-        'query' => $queryParams,
+      $response = $this->httpClient->request('POST', self::GRAPHQL_URL, [
+        'headers' => [
+          'Content-Type' => 'application/json',
+          'Accept' => 'application/json',
+        ],
+        'body' => json_encode([
+          'query' => $query,
+          'variables' => (object) $variables,
+        ], JSON_THROW_ON_ERROR),
         'timeout' => 10,
       ]);
 
       $data = json_decode($response->getBody()->getContents(), TRUE, 512, JSON_THROW_ON_ERROR);
-      return $data['results'] ?? [];
+      return $data['data']['characters']['results'] ?? [];
     }
     catch (\Throwable $exception) {
       $this->logger->error($exception->getMessage());
@@ -64,19 +86,45 @@ final class RickAndMortyApiClient {
   }
 
   /**
+   * Fetches characters by their IDs.
+   *
    * @param array $ids
+   *   The character IDs to fetch.
    *
    * @return array
+   *   An array of character data.
    */
-
   public function getCharactersByIds(array $ids): array {
+    if (empty($ids)) {
+      return [];
+    }
+    $query = '
+      query GetCharactersByIds($ids: [ID!]!) {
+        charactersByIds(ids: $ids) {
+          id
+          name
+          status
+          species
+          image
+        }
+      }
+    ';
+
     try {
-      $response = $this->httpClient->request('GET', self::API_URL . '/' . implode(',', $ids), [
+      $response = $this->httpClient->request('POST', self::GRAPHQL_URL, [
+        'headers' => [
+          'Content-Type' => 'application/json',
+          'Accept' => 'application/json',
+        ],
+        'body' => json_encode([
+          'query' => $query,
+          'variables' => (object) ['ids' => $ids],
+        ], JSON_THROW_ON_ERROR),
         'timeout' => 10,
       ]);
       $data = json_decode($response->getBody()->getContents(), TRUE, 512, JSON_THROW_ON_ERROR);
 
-      return isset($data['id']) ? [$data] : $data;
+      return $data['data']['charactersByIds'] ?? [];
     }
     catch (\Throwable $exception) {
       $this->logger->error($exception->getMessage());

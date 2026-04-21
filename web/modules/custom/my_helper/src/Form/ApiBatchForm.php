@@ -4,13 +4,40 @@ declare(strict_types=1);
 
 namespace Drupal\my_helper\Form;
 
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Form to run API batch operations.
  */
 class ApiBatchForm extends FormBase {
+  /**
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
+   * Constructs a new ApiBatchForm.
+   *
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager.
+   */
+  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+    $this->entityTypeManager = $entity_type_manager;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('entity_type.manager')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -85,12 +112,12 @@ class ApiBatchForm extends FormBase {
       foreach ($chunks as $chunk) {
         $batch['operations'][] = [
           '\Drupal\my_helper\Batch\ApiBatchProcessor::processImport',
-          [$chunk]
+          [$chunk],
         ];
       }
     }
     else {
-      $query = \Drupal::entityQuery('node')
+      $query = $this->entityTypeManager->getStorage('node')->getQuery()
         ->accessCheck(FALSE)
         ->condition('type', 'api_item');
       $nids = $query->execute();
@@ -99,11 +126,12 @@ class ApiBatchForm extends FormBase {
       foreach ($chunks as $chunk) {
         $batch['operations'][] = [
           '\Drupal\my_helper\Batch\ApiBatchProcessor::processDelete',
-          [$chunk]
+          [$chunk],
         ];
       }
     }
 
     batch_set($batch);
   }
+
 }

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Drupal\my_helper\Batch;
 
-use Drupal\node\Entity\Node;
-
 /**
  * Processor for the API batch operations.
  */
@@ -22,8 +20,6 @@ class ApiBatchProcessor {
   public static function processImport(array $ids, array &$context): void {
     /** @var \Drupal\my_helper\Service\RickAndMortyApiClient $apiClient */
     $apiClient = \Drupal::service('my_helper.rm_api_client');
-    /** @var \Drupal\my_helper\Service\RickAndMortyImporter $importer */
-    $importer = \Drupal::service('my_helper.rm_importer');
 
     $characters = $apiClient->getCharactersByIds($ids);
     $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
@@ -98,8 +94,10 @@ class ApiBatchProcessor {
       if ($deleted > 0) {
         \Drupal::messenger()->addMessage("Successfully deleted $deleted items.");
       }
-    } else {
+    }
+    else {
       \Drupal::messenger()->addError("An error occurred during the batch process.");
     }
   }
+
 }

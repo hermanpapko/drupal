@@ -8,8 +8,6 @@ use Drupal\node\NodeInterface;
 use Drupal\user\Entity\Role;
 use Drupal\user\Entity\User;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\RequestEvent;
-use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * Subscribes to ApiItem events.
@@ -70,7 +68,8 @@ class ApiItemSubscriber implements EventSubscriberInterface {
         $user->addRole($role_machine_name);
         $user->activate();
         $user->save();
-      } catch (\Exception $e) {
+      }
+      catch (\Exception $e) {
         \Drupal::logger('my_helper')->error('Could not create a user: ' . $e->getMessage());
         $user = NULL;
       }
@@ -78,7 +77,8 @@ class ApiItemSubscriber implements EventSubscriberInterface {
 
     if ($user) {
       $node->setOwnerId($user->id());
-    } else {
+    }
+    else {
       // Default to admin (UID 1) if user creation failed.
       $node->setOwnerId(1);
     }
