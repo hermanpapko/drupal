@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Form to run API batch operations.
  */
-class ApiBatchForm extends FormBase {
+final class ApiBatchForm extends FormBase {
   /**
    * The entity type manager.
    *
