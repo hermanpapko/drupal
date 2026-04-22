@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - my_helper
+id: frontend_api
+name: 'Frontend API'
+schema: my_helper_schema
+endpoint: /graphql
+debug_flag: false
+caching: true
+batching: true

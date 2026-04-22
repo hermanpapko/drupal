@@ -1,0 +1,11 @@
+type Query {
+  apiItem(id: Int!): NodeApiItem
+  apiItems(limit: Int, offset: Int): [NodeApiItem!]!
+}
+
+type NodeApiItem {
+  id: Int!
+  title: String!
+  status: Boolean!
+  species: String
+}

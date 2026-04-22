@@ -225,13 +225,13 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: string
+          plugin_id: boolean
           operator: '='
-          value: ''
+          value: '1'
           group: 1
           exposed: true
           expose:
-            operator_id: field_status_value_op
+            operator_id: ''
             label: 'status (field_status)'
             description: ''
             use_operator: false
@@ -244,7 +244,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-            placeholder: ''
           is_grouped: false
           group_info:
             label: ''

@@ -23,7 +23,10 @@
         "drupal/core-recipe-unpack": "^11.3",
         "drupal/core-recommended": "^11.3",
         "drupal/devel": "^5.5",
-        "drupal/graphql": "^3.9",
+        "drupal/graphql": "^4.0",
+        "drupal/graphql_compose": "^2.4",
+        "drupal/graphql_core_schema": "^1.0",
+        "drupal/typed_data": "^2.0",
         "drush/drush": "^13.7"
     },
     "conflict": {
@@ -42,7 +45,10 @@
             "php-http/discovery": true,
             "php-tuf/composer-integration": true
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "audit": {
+            "ignore": ["PKSA-7h5p-prw9-w5nr"]
+        }
     },
     "extra": {
         "drupal-scaffold": {
