@@ -1,0 +1,28 @@
+.paragraph--type--text-image {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.paragraph--type--text-image > div {
+  flex: 1 1 calc(50% - 10px);
+  min-width: 300px;
+}
+
+/* Image on the right (default behavior if text is first in DOM) */
+.paragraph--type--text-image.image-right {
+  flex-direction: row;
+}
+
+/* Image on the left */
+.paragraph--type--text-image.image-left {
+  flex-direction: row-reverse;
+}
+
+.paragraph--type--text-image .field--name-field-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

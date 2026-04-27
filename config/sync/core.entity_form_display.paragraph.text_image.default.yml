@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.text_image.field_image
+    - field.field.paragraph.text_image.field_image_position
     - field.field.paragraph.text_image.field_text
     - paragraphs.paragraphs_type.text_image
   module:
     - media_library
+    - options
     - text
 id: paragraph.text_image.default
 targetEntityType: paragraph
@@ -20,6 +22,12 @@ content:
     region: content
     settings:
       media_types: {  }
+    third_party_settings: {  }
+  field_image_position:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_text:
     type: text_textarea
