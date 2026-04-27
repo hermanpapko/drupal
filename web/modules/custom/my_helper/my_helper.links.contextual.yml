@@ -1,0 +1,10 @@
+entity.my_helper_my_helper_module.edit_form:
+  route_name: entity.my_helper_my_helper_module.edit_form
+  group: my_helper_my_helper_module
+  title: 'Edit'
+
+entity.my_helper_my_helper_module.delete_form:
+  route_name: entity.my_helper_my_helper_module.delete_form
+  group: my_helper_my_helper_module
+  title: 'Delete'
+  weight: 10

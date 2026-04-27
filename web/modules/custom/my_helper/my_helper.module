@@ -23,6 +23,9 @@ function my_helper_theme(array $existing, string $type, string $theme, string $p
         'visit_time' => NULL,
       ],
     ],
+    'my_helper_my_helper_module' => [
+      'render element' => 'elements',
+    ],
   ];
 }
 
@@ -45,4 +48,103 @@ function my_helper_node_presave(NodeInterface $node): void {
  */
 function my_helper_node_delete(NodeInterface $node): void {
   \Drupal::service('my_helper.api_item_subscriber')->handleDelete($node);
+}
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+use Drupal\user\UserInterface;
+
+/**
+ * Prepares variables for my helper module templates.
+ *
+ * Default template: my-helper-my-helper-module.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the my helper module
+ *     information and any fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_my_helper_my_helper_module(array &$variables): void {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_user_cancel().
+ */
+function my_helper_user_cancel($edit, UserInterface $account, $method): void {
+  switch ($method) {
+    case 'user_cancel_block_unpublish':
+      // Unpublish my helper modules.
+      $storage = \Drupal::entityTypeManager()->getStorage('my_helper_my_helper_module');
+      $my_helper_my_helper_module_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->condition('status', 1)
+        ->accessCheck(FALSE)
+        ->execute();
+      foreach ($storage->loadMultiple($my_helper_my_helper_module_ids) as $my_helper_my_helper_module) {
+        /** @var \Drupal\Core\Entity\ContentEntityInterface $my_helper_my_helper_module */
+        $my_helper_my_helper_module->set('status', FALSE)->save();
+      }
+      break;
+
+    case 'user_cancel_reassign':
+      // Anonymize my helper modules.
+      $storage = \Drupal::entityTypeManager()->getStorage('my_helper_my_helper_module');
+      $my_helper_my_helper_module_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->accessCheck(FALSE)
+        ->execute();
+      foreach ($storage->loadMultiple($my_helper_my_helper_module_ids) as $my_helper_my_helper_module) {
+        /** @var \Drupal\Core\Entity\ContentEntityInterface&\Drupal\user\EntityOwnerInterface $my_helper_my_helper_module */
+        $my_helper_my_helper_module->setOwnerId(0)->save();
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_predelete() for user entities.
+ */
+function my_helper_user_predelete(UserInterface $account): void {
+  // Delete my helper modules that belong to this account.
+  $storage = \Drupal::entityTypeManager()->getStorage('my_helper_my_helper_module');
+  $my_helper_my_helper_module_ids = $storage->getQuery()
+    ->condition('uid', $account->id())
+    ->accessCheck(FALSE)
+    ->execute();
+  $storage->delete(
+    $storage->loadMultiple($my_helper_my_helper_module_ids)
+  );
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function my_helper_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Check that this is the Task creation or edit form.
+  if ($form_id === 'node_task_form' || $form_id === 'node_task_edit_form') {
+
+    // 1. Change the button text.
+    if (isset($form['actions']['submit'])) {
+      $form['actions']['submit']['#value'] = t('Save Task (Altered!)');
+    }
+
+    // 2. Add custom validation.
+    $form['#validate'][] = 'my_helper_task_custom_validate';
+  }
+}
+
+/**
+ * Custom validation callback for Task form.
+ */
+function my_helper_task_custom_validate(&$form, FormStateInterface $form_state) {
+  $title = $form_state->getValue('title')[0]['value'] ?? '';
+
+  if (strtolower($title) === 'test') {
+    $form_state->setErrorByName('title', t('Please use a more descriptive title than "Test".'));
+  }
 }

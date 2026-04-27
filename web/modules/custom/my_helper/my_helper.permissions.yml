@@ -1,0 +1,3 @@
+administer my_helper_my_helper_module:
+  title: 'Administer my helper modules'
+  restrict access: true

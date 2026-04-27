@@ -23,3 +23,19 @@ my_helper.api_batch_form:
     _title: 'ApiItems management'
   requirements:
     _permission: 'administer site configuration'
+
+entity.my_helper_my_helper_module.settings:
+  path: 'admin/structure/my-helper-my-helper-module'
+  defaults:
+    _form: '\Drupal\my_helper\Form\TimeLogSettingsForm'
+    _title: 'My Helper Module'
+  requirements:
+    _permission: 'administer my_helper_my_helper_module'
+
+my_helper.time_log_custom_form:
+  path: '/log-time'
+  defaults:
+    _form: '\Drupal\my_helper\Form\TimeLogCustomForm'
+    _title: 'Log your time'
+  requirements:
+    _permission: 'access content'

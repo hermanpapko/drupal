@@ -1,0 +1,11 @@
+entity.my_helper_my_helper_module.settings:
+  title: 'My Helper Module'
+  description: 'Configure a My Helper Module entity type.'
+  route_name:  entity.my_helper_my_helper_module.settings
+  parent: system.admin_structure
+
+entity.my_helper_my_helper_module.collection:
+  title: 'My Helper Modules'
+  description: 'List of my helper modules.'
+  route_name: entity.my_helper_my_helper_module.collection
+  parent: system.admin_content

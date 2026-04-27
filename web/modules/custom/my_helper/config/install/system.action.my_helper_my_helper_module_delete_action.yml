@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - my_helper
+id: my_helper_my_helper_module_delete_action
+label: 'Delete my helper modules'
+type: my_helper_my_helper_module
+plugin: entity:delete_action:my_helper_my_helper_module
+configuration: {  }
