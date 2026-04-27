@@ -1,0 +1,31 @@
+grumphp:
+  hooks_dir: ~
+  hooks_preset: local
+  tasks:
+    phpcs:
+      standard: [Drupal, DrupalPractice]
+      triggered_by:
+        - php
+        - module
+        - inc
+        - install
+        - test
+        - profile
+        - theme
+        - info
+        - txt
+        - md
+        - yml
+      ignore_patterns:
+        - web/core/
+        - web/modules/contrib/
+        - vendor/
+
+    phpstan:
+      level: 3
+      triggered_by:
+        - php
+        - module
+        - inc
+      configuration: phpstan.neon
+      use_grumphp_paths: false
