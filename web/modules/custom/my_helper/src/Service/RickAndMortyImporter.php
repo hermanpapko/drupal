@@ -58,7 +58,6 @@ final class RickAndMortyImporter {
         'type' => 'api_item',
         'title' => $char['name'],
         'field_api_id' => (int) $char['id'],
-        'field_status' => $char['status'],
         'field_species' => $char['species'],
       ];
 

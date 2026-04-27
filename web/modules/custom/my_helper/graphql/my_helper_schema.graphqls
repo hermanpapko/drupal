@@ -6,6 +6,5 @@ type Query {
 type NodeApiItem {
   id: Int!
   title: String!
-  status: Boolean!
   species: String
 }

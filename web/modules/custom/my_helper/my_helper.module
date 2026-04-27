@@ -8,7 +8,6 @@
 declare (strict_types=1);
 
 use Drupal\Core\Session\AccountInterface;
-use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_theme().
@@ -34,20 +33,6 @@ function my_helper_theme(array $existing, string $type, string $theme, string $p
  */
 function my_helper_user_login(AccountInterface $account): void {
   \Drupal::service('my_helper.login_handler')->onUserLogin($account);
-}
-
-/**
- * Implements hook_node_presave().
- */
-function my_helper_node_presave(NodeInterface $node): void {
-  \Drupal::service('my_helper.api_item_subscriber')->handlePresave($node);
-}
-
-/**
- * Implements hook_node_delete().
- */
-function my_helper_node_delete(NodeInterface $node): void {
-  \Drupal::service('my_helper.api_item_subscriber')->handleDelete($node);
 }
 
 use Drupal\Core\Form\FormStateInterface;

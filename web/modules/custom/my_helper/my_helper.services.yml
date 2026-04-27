@@ -40,3 +40,4 @@ services:
     arguments:
       - '@entity_type.manager'
       - '@logger.factory'
+      - '@messenger'

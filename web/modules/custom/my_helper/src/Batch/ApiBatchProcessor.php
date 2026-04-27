@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\my_helper\Batch;
 
+use Drupal\my_helper\Event\BatchFinishedEvent;
+
 /**
  * Processor for the API batch operations.
  */
@@ -35,7 +37,6 @@ class ApiBatchProcessor {
         'type' => 'api_item',
         'title' => $char['name'],
         'field_api_id' => (int) $char['id'],
-        'field_status' => $char['status'],
         'field_species' => $char['species'],
       ];
 
@@ -85,19 +86,8 @@ class ApiBatchProcessor {
    *   The batch operations.
    */
   public static function batchFinished($success, $results, $operations): void {
-    if ($success) {
-      $imported = $results['imported'] ?? 0;
-      $deleted = $results['deleted'] ?? 0;
-      if ($imported > 0) {
-        \Drupal::messenger()->addMessage("Successfully imported $imported items.");
-      }
-      if ($deleted > 0) {
-        \Drupal::messenger()->addMessage("Successfully deleted $deleted items.");
-      }
-    }
-    else {
-      \Drupal::messenger()->addError("An error occurred during the batch process.");
-    }
+    $event = new BatchFinishedEvent($success, $results, $operations);
+    \Drupal::service('event_dispatcher')->dispatch($event, BatchFinishedEvent::EVENT_NAME);
   }
 
 }

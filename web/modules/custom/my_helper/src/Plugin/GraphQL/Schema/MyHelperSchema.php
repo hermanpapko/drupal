@@ -73,13 +73,6 @@ final class MyHelperSchema extends SdlSchemaPluginBase {
         ->map('entity', $builder->fromParent())
     );
 
-    $registry->addFieldResolver('NodeApiItem', 'status',
-      $builder->produce('property_path')
-        ->map('type', $builder->fromValue('entity:node'))
-        ->map('value', $builder->fromParent())
-        ->map('path', $builder->fromValue('field_status.value'))
-    );
-
     $registry->addFieldResolver('NodeApiItem', 'species',
       $builder->produce('property_path')
         ->map('type', $builder->fromValue('entity:node'))
