@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\my_helper\Form;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
