@@ -1,0 +1,41 @@
+_core:
+  default_config_hash: HjBACF5NUOUEE_nzaQUEQf3mwzx-c-cevV4NejXsv1A
+entity_config:
+  media:
+    audio:
+      enabled: false
+    document:
+      enabled: false
+    image:
+      enabled: false
+    remote_video:
+      enabled: false
+    video:
+      enabled: false
+  node:
+    api_item:
+      enabled: true
+    article:
+      enabled: false
+    page:
+      enabled: false
+  taxonomy_term:
+    tags:
+      enabled: false
+field_config:
+  node:
+    api_item:
+      field_api_id:
+        enabled: true
+      field_api_image:
+        enabled: true
+      field_species:
+        enabled: true
+settings:
+  expose_entity_ids: false
+  schema_description: 'GraphQL Compose'
+  schema_version: '1'
+  simple_unions: true
+  site_name: false
+  site_slogan: false
+  site_front: true

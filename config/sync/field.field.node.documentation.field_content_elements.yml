@@ -1,0 +1,36 @@
+uuid: 54faf724-9e93-4faf-903f-90d32e640c04
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_elements
+    - node.type.documentation
+    - paragraphs.paragraphs_type.text
+    - paragraphs.paragraphs_type.text_image
+  module:
+    - entity_reference_revisions
+id: node.documentation.field_content_elements
+field_name: field_content_elements
+entity_type: node
+bundle: documentation
+label: 'Content elements'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      text: text
+      text_image: text_image
+    negate: 0
+    target_bundles_drag_drop:
+      text:
+        weight: 3
+        enabled: true
+      text_image:
+        weight: 4
+        enabled: true
+field_type: entity_reference_revisions

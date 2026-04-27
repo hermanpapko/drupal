@@ -116,3 +116,4 @@ global-styling:
   css:
     theme:
       css/api-item.css: {}
+      css/kanban.css: {}

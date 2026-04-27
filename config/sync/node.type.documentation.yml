@@ -1,0 +1,18 @@
+uuid: 21b7de02-f5f7-4174-b07b-c97cc53945d8
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Documentation
+type: documentation
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

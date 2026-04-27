@@ -1,0 +1,33 @@
+uuid: 343a891a-d62b-4743-b454-d161d9789037
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.kanban_board
+  module:
+    - node
+    - views
+  theme:
+    - my_api_theme
+id: my_api_theme_views_block__kanban_board_block_1
+theme: my_api_theme
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:kanban_board-block_1'
+settings:
+  id: 'views_block:kanban_board-block_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: null
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      project: project

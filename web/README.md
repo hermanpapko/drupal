@@ -1,5 +1,4 @@
-<img alt="Drupal Logo" src="https://www.drupal.org/files/Wordmark_blue_RGB.png"
-  height="60px">
+<img alt="Drupal Logo" src="https://www.drupal.org/files/Wordmark_blue_RGB.png" height="60px">
 
 Drupal is an open source content management platform supporting a variety of
 websites ranging from personal weblogs to large community-driven websites. For
@@ -64,8 +63,7 @@ Learn about the [Drupal trademark and logo policy here][trademark].
 [Drupal community]: https://www.drupal.org/community
 [GitLab repository]: https://git.drupalcode.org/project/drupal
 [issue queue]: https://www.drupal.org/project/issues/drupal
-[issue forks]:
-https://www.drupal.org/drupalorg/docs/gitlab-integration/issue-forks-merge-requests
+[issue forks]: https://www.drupal.org/drupalorg/docs/gitlab-integration/issue-forks-merge-requests
 [documentation]: https://www.drupal.org/documentation
 [changelog]: https://www.drupal.org/list-changes/drupal
 [modules]: https://www.drupal.org/project/project_module

@@ -1,16 +1,15 @@
-uuid: 5a2683a7-72fb-4607-a25e-661f24453833
+uuid: 022c28f6-8f5a-42ae-a089-072dae07a0fd
 langcode: en
 status: true
 dependencies:
   module:
     - node
-    - taxonomy
-id: node.field_status
-field_name: field_status
+id: node.field_body
+field_name: field_body
 entity_type: node
-type: entity_reference
+type: string_long
 settings:
-  target_type: taxonomy_term
+  case_sensitive: false
 module: core
 locked: false
 cardinality: 1

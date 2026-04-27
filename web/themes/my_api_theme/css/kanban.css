@@ -1,0 +1,48 @@
+.view-id-kanban_board .view-content {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 0 20px 0;
+  align-items: flex-start;
+}
+
+.view-id-kanban_board .view-content > div {
+  flex: 0 0 320px;
+  background-color: #f4f5f7;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.kanban-column-header h3 {
+  margin: 0 0 12px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #172b4d;
+  padding: 0 5px;
+}
+
+.kanban-column-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kanban-card {
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 12px;
+  box-shadow: 0 1px 2px rgba(9, 30, 66, 0.25);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.kanban-card:hover {
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 5px rgba(9, 30, 66, 0.3);
+}
+
+.kanban-card .views-field .views-label {
+  font-weight: bold;
+  font-size: 12px;
+  color: #5e6c84;
+}

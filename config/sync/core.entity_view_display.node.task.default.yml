@@ -1,0 +1,55 @@
+uuid: 48009581-2595-4cf4-9468-a6a0bf4e4aa2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.task.field_attachments
+    - field.field.node.task.field_body
+    - field.field.node.task.field_project
+    - field.field.node.task.field_status
+    - node.type.task
+  module:
+    - user
+id: node.task.default
+targetEntityType: node
+bundle: task
+mode: default
+content:
+  field_attachments:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_body:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_project:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_status:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

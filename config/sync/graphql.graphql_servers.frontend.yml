@@ -1,0 +1,18 @@
+uuid: 3da4d968-3c0c-4000-b33c-c539acd1fae1
+langcode: en
+status: true
+dependencies: {  }
+name: frontend
+label: Frontend
+endpoint: /graphql
+debug_flag: 1
+schema: my_helper_schema
+caching: true
+batching: true
+disable_introspection: false
+query_depth: null
+query_complexity: null
+schema_configuration:
+  graphql_compose:
+    enabled: true
+persisted_queries_settings: {  }

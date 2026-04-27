@@ -1,0 +1,18 @@
+{#
+/**
+ * Custom template for Kanban board columns.
+ */
+#}
+{% if title %}
+  <div class="kanban-column-header">
+    <h3>{{ title }}</h3>
+  </div>
+{% endif %}
+
+<div class="kanban-column-content">
+  {% for row in rows %}
+    <div{{ row.attributes.addClass('kanban-card') }}>
+      {{ row.content }}
+    </div>
+  {% endfor %}
+</div>
