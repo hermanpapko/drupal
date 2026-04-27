@@ -9,6 +9,8 @@ use Drupal\graphql\GraphQL\ResolverRegistry;
 use Drupal\graphql\Plugin\GraphQL\Schema\SdlSchemaPluginBase;
 
 /**
+ * Defines a GraphQL schema.
+ *
  * @Schema(
  *   id = "my_helper_schema",
  *   name = "My Helper Schema"
@@ -16,6 +18,9 @@ use Drupal\graphql\Plugin\GraphQL\Schema\SdlSchemaPluginBase;
  */
 final class MyHelperSchema extends SdlSchemaPluginBase {
 
+  /**
+   * {@inheritdoc}
+   */
   public function getResolverRegistry(): ResolverRegistry {
     $builder = new ResolverBuilder();
     $registry = new ResolverRegistry();
@@ -26,6 +31,14 @@ final class MyHelperSchema extends SdlSchemaPluginBase {
     return $registry;
   }
 
+  /**
+   * Adds query resolvers.
+   *
+   * @param \Drupal\graphql\GraphQL\ResolverRegistry $registry
+   *   The resolver registry.
+   * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
+   *   The resolver builder.
+   */
   private function addQueryResolvers(ResolverRegistry $registry, ResolverBuilder $builder): void {
     $registry->addFieldResolver('Query', 'apiItem',
       $builder->produce('entity_load')
@@ -41,6 +54,14 @@ final class MyHelperSchema extends SdlSchemaPluginBase {
     );
   }
 
+  /**
+   * Adds node API item resolvers.
+   *
+   * @param \Drupal\graphql\GraphQL\ResolverRegistry $registry
+   *   The resolver registry.
+   * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
+   *   The resolver builder.
+   */
   private function addNodeApiItemResolvers(ResolverRegistry $registry, ResolverBuilder $builder): void {
     $registry->addFieldResolver('NodeApiItem', 'id',
       $builder->produce('entity_id')
@@ -66,4 +87,5 @@ final class MyHelperSchema extends SdlSchemaPluginBase {
         ->map('path', $builder->fromValue('field_species.value'))
     );
   }
+
 }

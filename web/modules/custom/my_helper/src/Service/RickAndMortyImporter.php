@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\my_helper\Service;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\File\FileExists;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
@@ -116,7 +117,7 @@ final class RickAndMortyImporter {
         if ($data === FALSE) {
           throw new \Exception("Could not download image from $url");
         }
-        $file = $this->fileSystem->saveData($data, $destination, FileSystemInterface::EXISTS_REPLACE);
+        $file = $this->fileSystem->saveData($data, $destination, FileExists::Replace);
         $fileEntity = $fileStorage->create([
           'uri' => $file,
           'status' => 1,

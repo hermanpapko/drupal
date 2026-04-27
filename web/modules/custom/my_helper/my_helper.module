@@ -1,12 +1,18 @@
 <?php
 
+/**
+ * @file
+ * Primary module hooks for my_helper module.
+ */
+
 declare (strict_types=1);
 
 use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
-use Drupal\user\Entity\Role;
-use Drupal\user\Entity\User;
 
+/**
+ * Implements hook_theme().
+ */
 function my_helper_theme(array $existing, string $type, string $theme, string $path): array {
   return [
     'my_greeting_template' => [
@@ -20,15 +26,23 @@ function my_helper_theme(array $existing, string $type, string $theme, string $p
   ];
 }
 
-// Hook triggered when a user logs into the site.
+/**
+ * Implements hook_user_login().
+ */
 function my_helper_user_login(AccountInterface $account): void {
   \Drupal::service('my_helper.login_handler')->onUserLogin($account);
 }
 
+/**
+ * Implements hook_node_presave().
+ */
 function my_helper_node_presave(NodeInterface $node): void {
   \Drupal::service('my_helper.api_item_subscriber')->handlePresave($node);
 }
 
+/**
+ * Implements hook_node_delete().
+ */
 function my_helper_node_delete(NodeInterface $node): void {
   \Drupal::service('my_helper.api_item_subscriber')->handleDelete($node);
 }

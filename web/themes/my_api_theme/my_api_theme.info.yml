@@ -1,7 +1,6 @@
 name: my_api_theme
 type: theme
 'base theme': stable9
-version: 1.0.0
 libraries:
   - my_api_theme/base
   - my_api_theme/messages
@@ -22,6 +21,6 @@ libraries-extend:
     - my_api_theme/progress
   core/drupal.tablesort:
     - my_api_theme/drupal.tablesort
-description: ''
+description: 'My custom API theme.'
 core_version_requirement: ^11
 generator: 'starterkit_theme:11.3.5'

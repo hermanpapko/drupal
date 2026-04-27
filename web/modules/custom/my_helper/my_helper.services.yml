@@ -37,4 +37,3 @@ services:
     class: Drupal\my_helper\EventSubscriber\ApiItemSubscriber
     tags:
       - { name: event_subscriber }
-

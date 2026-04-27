@@ -5,6 +5,7 @@ my_helper.hello:
     _title: 'My first page'
     name: 'Guest'
   requirements:
+    # No access restriction is needed for this page.
     _access: 'TRUE'
 
 my_helper.settings:
