@@ -42,6 +42,7 @@ class ApiBatchProcessor {
 
       if (!empty($existingNodes)) {
         $nid = reset($existingNodes);
+        /** @var \Drupal\node\NodeInterface $node */
         $node = $nodeStorage->load($nid);
         foreach ($nodeData as $fieldName => $value) {
           $node->set($fieldName, $value);

@@ -17,6 +17,7 @@
     "require": {
         "php": ">=8.3",
         "composer/installers": "^2.3",
+        "drupal/admin_toolbar": "^3.6",
         "drupal/better_exposed_filters": "^7.1",
         "drupal/core-composer-scaffold": "^11.3",
         "drupal/core-project-message": "^11.3",
@@ -30,6 +31,7 @@
         "drupal/graphql_compose": "^2.4",
         "drupal/graphql_core_schema": "^1.0",
         "drupal/paragraphs": "^1.20",
+        "drupal/pathauto": "^1.15",
         "drupal/typed_data": "^2.0",
         "drush/drush": "^13.7"
     },

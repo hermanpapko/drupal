@@ -14,7 +14,7 @@ entity_type: node
 bundle: task
 label: Status
 description: ''
-required: false
+required: true
 translatable: false
 default_value:
   -

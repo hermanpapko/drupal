@@ -1,22 +1,5 @@
-entity.my_helper_my_helper_module.settings:
-  title: 'Settings'
-  route_name: entity.my_helper_my_helper_module.settings
-  base_route: entity.my_helper_my_helper_module.settings
-entity.my_helper_my_helper_module.view:
-  title: 'View'
-  route_name: entity.my_helper_my_helper_module.canonical
-  base_route: entity.my_helper_my_helper_module.canonical
-entity.my_helper_my_helper_module.edit_form:
-  title: 'Edit'
-  route_name: entity.my_helper_my_helper_module.edit_form
-  base_route: entity.my_helper_my_helper_module.canonical
-entity.my_helper_my_helper_module.delete_form:
-  title: 'Delete'
-  route_name: entity.my_helper_my_helper_module.delete_form
-  base_route: entity.my_helper_my_helper_module.canonical
-  weight: 10
-entity.my_helper_my_helper_module.collection:
-  title: 'My Helper Modules'
-  route_name: entity.my_helper_my_helper_module.collection
+my_helper.projects_dashboard_tab:
+  route_name: view.projects_dashboard.page_1
+  title: 'Projects Dashboard'
   base_route: system.admin_content
-  weight: 10
+  weight: 20

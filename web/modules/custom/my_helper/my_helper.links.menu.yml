@@ -1,11 +1,7 @@
-entity.my_helper_my_helper_module.settings:
-  title: 'My Helper Module'
-  description: 'Configure a My Helper Module entity type.'
-  route_name:  entity.my_helper_my_helper_module.settings
-  parent: system.admin_structure
-
-entity.my_helper_my_helper_module.collection:
-  title: 'My Helper Modules'
-  description: 'List of my helper modules.'
-  route_name: entity.my_helper_my_helper_module.collection
+my_helper.dashboard:
+  title: 'Projects Dashboard'
+  description: 'View project dashboard'
+  route_name: view.projects_dashboard.page_1
   parent: system.admin_content
+  weight: 10
+  menu_name: admin

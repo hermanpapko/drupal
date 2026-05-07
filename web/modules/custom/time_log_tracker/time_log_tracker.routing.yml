@@ -1,0 +1,16 @@
+time_log_tracker.log_time:
+  path: '/log-time/{project_id}'
+  defaults:
+    _form: '\Drupal\time_log_tracker\Form\LogTimeForm'
+    _title: 'Log Time'
+    project_id: null
+  requirements:
+    _permission: 'access content'
+
+time_log_tracker.time_log_settings:
+  path: '/admin/structure/time-log-settings'
+  defaults:
+    _description: 'Configure Time Log entity'
+    _title: 'Time Log Settings'
+  requirements:
+    _permission: 'administer time_log'

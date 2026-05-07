@@ -1,0 +1,9 @@
+uuid: c83bdc9f-e738-4379-9c22-aaf51123f5a1
+langcode: en
+status: true
+dependencies: {  }
+id: rm_alien
+label: 'RM Species: Alien'
+weight: 5
+is_admin: false
+permissions: {  }

@@ -4,12 +4,12 @@
  */
 #}
 {% if title %}
-  <div class="kanban-column-header">
+  <div class="kanban-column-header" style="background-color: {{ column_color|default('#f4f5f7') }};">
     <h3>{{ title }}</h3>
   </div>
 {% endif %}
 
-<div class="kanban-column-content">
+<div class="kanban-column-content" style="border-top: 5px solid {{ column_color|default('#f4f5f7') }};">
   {% for row in rows %}
     <div{{ row.attributes.addClass('kanban-card') }}>
       {{ row.content }}

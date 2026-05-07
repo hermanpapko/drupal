@@ -1,0 +1,8 @@
+name: 'Time Log Tracker'
+type: module
+description: 'Provides functionality for tracking time on projects and tasks.'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:node
+  - drupal:user

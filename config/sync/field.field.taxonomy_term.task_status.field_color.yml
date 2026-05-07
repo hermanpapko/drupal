@@ -1,0 +1,19 @@
+uuid: cdc686dc-ba3c-4f0e-bfe5-aa31473b9bb3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_color
+    - taxonomy.vocabulary.task_status
+id: taxonomy_term.task_status.field_color
+field_name: field_color
+entity_type: taxonomy_term
+bundle: task_status
+label: Color
+description: 'Hex color code (e.g. #ff0000)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

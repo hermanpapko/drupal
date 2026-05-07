@@ -1,0 +1,21 @@
+uuid: 30e4b29a-844e-4e69-b5a7-83c6ef65ca60
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: task
+label: Task
+type: 'canonical_entities:node'
+pattern: '/project/task/[node:nid]'
+selection_criteria:
+  -
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      task: task
+selection_logic: and
+weight: 0
+relationships: {  }

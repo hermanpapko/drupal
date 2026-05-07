@@ -1,0 +1,14 @@
+uuid: e10c7fe3-6435-4203-ba5f-b1e34431787f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.rm_alien
+  module:
+    - user
+id: user_add_role_action.rm_alien
+label: 'Add the RM Species: Alien role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: rm_alien

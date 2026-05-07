@@ -1,0 +1,9 @@
+uuid: f579a1b7-d3c6-49e8-8d69-36a410cd5a25
+langcode: en
+status: true
+dependencies: {  }
+id: rm_human
+label: 'RM Species: Human'
+weight: 4
+is_admin: false
+permissions: {  }

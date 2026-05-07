@@ -1,0 +1,14 @@
+<article{{ attributes.addClass('node', 'node--type-' ~ node.bundle|clean_class, view_mode ? 'node--view-mode-' ~ view_mode|clean_class) }}>
+
+  <div class="node__content">
+    <div class="project-actions" style="margin-bottom: 20px; display: flex; gap: 10px;">
+      {% if log_time_link %}
+        {{ log_time_link }}
+      {% endif %}
+      <a href="/admin/content/projects" class="button">Back to Dashboard</a>
+    </div>
+
+    {{ content|without('field_project_tasks', 'field_project_documentation') }}
+  </div>
+
+</article>

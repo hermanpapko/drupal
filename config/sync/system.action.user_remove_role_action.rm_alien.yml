@@ -1,0 +1,14 @@
+uuid: 76802c70-eaa8-4dcc-992f-88459f9d3f26
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.rm_alien
+  module:
+    - user
+id: user_remove_role_action.rm_alien
+label: 'Remove the RM Species: Alien role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: rm_alien

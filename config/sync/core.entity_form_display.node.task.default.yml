@@ -48,7 +48,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_status:
-    type: entity_reference_autocomplete
+    type: options_buttons
     weight: 122
     region: content
     settings:

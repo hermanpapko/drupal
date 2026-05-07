@@ -37,3 +37,45 @@ function my_api_theme_theme_suggestions_views_view_unformatted_alter(array &$sug
     $suggestions[] = 'views_view_unformatted__kanban_board';
   }
 }
+
+/**
+ * Implements hook_preprocess_views_view_unformatted().
+ */
+function my_api_theme_preprocess_views_view_unformatted(array &$variables): void {
+  /** @var \Drupal\views\ViewExecutable $view */
+  $view = $variables['view'];
+  if ($view->id() === 'kanban_board') {
+    // We assume the view is grouped by field_status.
+    if (!empty($variables['title'])) {
+      // Clean up the title from comments and extra whitespace.
+      $term_name = trim(strip_tags((string) $variables['title']));
+
+      // Sometimes strip_tags leaves remnants of comments if not used carefully,
+      // but in Twig/Drupal context it's usually enough.
+      // If we still can't find the term, we try to load it by name.
+      $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadByProperties([
+        'name' => $term_name,
+        'vid' => 'task_status',
+      ]);
+      if ($terms) {
+        $term = reset($terms);
+        $variables['column_color'] = $term->get('field_color')->value ?? '#f4f5f7';
+      }
+    }
+  }
+}
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function my_api_theme_preprocess_node(array &$variables): void {
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+  if ($node->bundle() === 'project' && $variables['view_mode'] === 'full') {
+    $variables['log_time_url'] = Url::fromRoute('time_log_tracker.log_time', [
+      'project_id' => $node->id(),
+    ])->toString();
+  }
+}

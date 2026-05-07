@@ -1,0 +1,14 @@
+uuid: 6fc1ad13-1d51-43dd-b3e1-7ab9bcfadf38
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.rm_human
+  module:
+    - user
+id: user_remove_role_action.rm_human
+label: 'Remove the RM Species: Human role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: rm_human

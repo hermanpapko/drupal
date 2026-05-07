@@ -1,5 +1,0 @@
-my_helper_my_helper_module.add_form:
-  title: 'Add my helper module'
-  route_name: entity.my_helper_my_helper_module.add_form
-  appears_on:
-    - entity.my_helper_my_helper_module.collection
