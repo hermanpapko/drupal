@@ -23,4 +23,3 @@ my_helper.api_batch_form:
     _title: 'ApiItems management'
   requirements:
     _permission: 'administer site configuration'
-
