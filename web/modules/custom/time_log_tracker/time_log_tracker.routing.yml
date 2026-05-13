@@ -14,3 +14,11 @@ time_log_tracker.time_log_settings:
     _title: 'Time Log Settings'
   requirements:
     _permission: 'administer time_log'
+
+time_log_tracker.reports:
+  path: '/admin/reports/time-logs'
+  defaults:
+    _form: '\Drupal\time_log_tracker\Form\ReportGeneratorForm'
+    _title: 'Generate Reports'
+  requirements:
+    _permission: 'administer time_log'

@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Time Log Tracker module.
+ */
+
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Add the time_spent field to the time_log entity.
+ */
+function time_log_tracker_update_10002(): void {
+  $field_storage_definition = BaseFieldDefinition::create('integer')
+    ->setLabel(t('Time spent'))
+    ->setDescription(t('The time spent in minutes.'))
+    ->setRequired(TRUE)
+    ->setDefaultValue(0)
+    ->setDisplayOptions('form', [
+      'type' => 'number',
+      'weight' => 7,
+    ])
+    ->setDisplayOptions('view', [
+      'label' => 'above',
+      'type' => 'number_integer',
+      'weight' => 7,
+    ])
+    ->setDisplayConfigurable('form', TRUE)
+    ->setDisplayConfigurable('view', TRUE);
+
+  \Drupal::entityDefinitionUpdateManager()
+    ->installFieldStorageDefinition('time_spent', 'time_log', 'time_log_tracker', $field_storage_definition);
+}

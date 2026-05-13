@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\time_log_tracker\Entity\TimeLog;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 
 /**
  * Provides a Time Log Tracker form.
@@ -16,17 +17,13 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 final class LogTimeForm extends FormBase {
 
   /**
-   * The entity type manager.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  protected $entityTypeManager;
-
-  /**
    * Constructs a new LogTimeForm object.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
-    $this->entityTypeManager = $entity_type_manager;
+  public function __construct(
+    protected EntityTypeManagerInterface $entityTypeManager,
+    MessengerInterface $messenger,
+  ) {
+    $this->setMessenger($messenger);
   }
 
   /**
@@ -34,7 +31,8 @@ final class LogTimeForm extends FormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('messenger')
     );
   }
 
@@ -70,6 +68,13 @@ final class LogTimeForm extends FormBase {
       '#required' => TRUE,
     ];
 
+    $form['time_spent'] = [
+      '#type' => 'number',
+      '#title' => $this->t('Time spent (minutes)'),
+      '#required' => TRUE,
+      '#min' => 1,
+    ];
+
     $form['actions'] = [
       '#type' => 'actions',
     ];
@@ -88,6 +93,7 @@ final class LogTimeForm extends FormBase {
     $time_log = TimeLog::create([
       'project' => $form_state->getValue('project'),
       'task' => $form_state->getValue('task'),
+      'time_spent' => $form_state->getValue('time_spent'),
     ]);
     $time_log->save();
 

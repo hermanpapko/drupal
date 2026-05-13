@@ -1,0 +1,4 @@
+services:
+  plugin.manager.report_generator:
+    class: Drupal\time_log_tracker\Plugin\ReportGeneratorManager
+    parent: default_plugin_manager
