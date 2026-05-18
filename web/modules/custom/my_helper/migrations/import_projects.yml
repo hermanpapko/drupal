@@ -1,0 +1,18 @@
+id: import_projects
+label: 'Import Projects from CSV'
+migration_group: my_helper_import
+source:
+  plugin: csv
+  path: 'public://import/import_data.csv'
+  header_offset: 0
+  ids: [project_id]
+process:
+  type:
+    plugin: default_value
+    default_value: project
+  title: project_name
+  status:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: 'entity:node'

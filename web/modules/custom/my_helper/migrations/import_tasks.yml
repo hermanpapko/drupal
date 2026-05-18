@@ -1,0 +1,25 @@
+id: import_tasks
+label: 'Import Tasks from CSV'
+migration_group: my_helper_import
+migration_dependencies:
+  optional:
+    - import_projects
+source:
+  plugin: csv
+  path: 'public://import/import_data.csv'
+  header_offset: 0
+  ids: [task_id]
+process:
+  type:
+    plugin: default_value
+    default_value: task
+  title: task_name
+  field_project:
+    plugin: migration_lookup
+    migration: import_projects
+    source: project_id
+  status:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: 'entity:node'

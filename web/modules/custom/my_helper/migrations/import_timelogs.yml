@@ -1,0 +1,29 @@
+id: import_timelogs
+label: 'Import Time Logs from CSV'
+migration_group: my_helper_import
+migration_dependencies:
+  optional:
+    - import_tasks
+source:
+  plugin: csv
+  path: 'public://import/import_data.csv'
+  header_offset: 0
+  ids: [log_id]
+  constants:
+    log_prefix: 'Log: '
+process:
+  project:
+    plugin: migration_lookup
+    migration: import_projects
+    source: project_id
+  task:
+    plugin: migration_lookup
+    migration: import_tasks
+    source: task_id
+  time_spent:
+    plugin: callback
+    callable: 'intval'
+    source: hours
+  uid: user_id
+destination:
+  plugin: 'entity:time_log'
