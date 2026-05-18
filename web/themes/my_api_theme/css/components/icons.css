@@ -19,3 +19,27 @@
   text-indent: -9999px;
   background: url(../../images/icons/feed.svg) no-repeat;
 }
+
+/**
+ * Export button styles.
+ */
+.export-link {
+  text-indent: 0;
+  overflow: visible;
+  width: auto;
+  height: auto;
+  padding-left: 28px !important;
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.export-link--xlsx {
+  background-image: url(../../images/icons/x-office-spreadsheet.png);
+}
+
+.export-link--csv {
+  background-image: url(../../images/icons/text-x-generic.png);
+}

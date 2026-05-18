@@ -8,6 +8,7 @@
 declare (strict_types=1);
 
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_theme().
@@ -26,13 +27,21 @@ function my_helper_theme(array $existing, string $type, string $theme, string $p
 }
 
 /**
+ * Implements hook_theme_registry_alter().
+ */
+function my_helper_theme_registry_alter(&$theme_registry) {
+  if (isset($theme_registry['export_icon'])) {
+    $theme_registry['export_icon']['path'] = \Drupal::service('extension.list.module')->getPath('my_helper') . '/templates';
+    $theme_registry['export_icon']['template'] = 'export-icon';
+  }
+}
+
+/**
  * Implements hook_user_login().
  */
 function my_helper_user_login(AccountInterface $account): void {
   \Drupal::service('my_helper.login_handler')->onUserLogin($account);
 }
-
-use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_form_alter().

@@ -2,9 +2,16 @@ uuid: e806da32-31ad-49bf-84bf-618d3006a19e
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.project
   module:
+    - csv_serialization
     - node
+    - rest
+    - serialization
     - user
+    - views_data_export
+    - xls_serialization
 id: projects_dashboard
 label: 'Projects Dashboard'
 module: views
@@ -169,6 +176,103 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  data_export_1:
+    id: data_export_1
+    display_title: 'Data export XLSX'
+    display_plugin: data_export
+    position: 2
+    display_options:
+      style:
+        type: data_export
+        options:
+          formats:
+            xlsx: xlsx
+          csv_settings:
+            delimiter: ','
+            enclosure: '"'
+            escape_char: \
+            strip_tags: true
+            trim: true
+            encoding: utf8
+            utf8_bom: '0'
+            use_serializer_encode_only: false
+            output_header: true
+          xml_settings:
+            encoding: UTF-8
+            root_node_name: response
+            item_node_name: item
+            format_output: false
+      display_extenders: {  }
+      path: admin/content/projects/export/xlsx
+      displays:
+        page_1: page_1
+        default: '0'
+      filename: export.xlsx
+      automatic_download: true
+      export_method: batch
+      export_batch_size: 1000
+      export_filesystem: public
+      custom_redirect_path: false
+      redirect_to_display: none
+      include_query_params: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  data_export_2:
+    id: data_export_2
+    display_title: 'Data export CSV'
+    display_plugin: data_export
+    position: 3
+    display_options:
+      style:
+        type: data_export
+        options:
+          formats:
+            csv: csv
+          csv_settings:
+            delimiter: ','
+            enclosure: '"'
+            escape_char: \
+            strip_tags: true
+            trim: true
+            encoding: utf8
+            utf8_bom: '0'
+            use_serializer_encode_only: false
+            output_header: true
+          xml_settings:
+            encoding: UTF-8
+            root_node_name: response
+            item_node_name: item
+            format_output: false
+      display_extenders: {  }
+      path: admin/content/projects/export/csv
+      displays:
+        page_1: page_1
+        default: '0'
+      filename: export.csv
+      automatic_download: true
+      export_method: batch
+      export_batch_size: 1000
+      export_filesystem: public
+      custom_redirect_path: false
+      redirect_to_display: none
+      include_query_params: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - 'user.node_grants:view'
         - user.permissions
       tags: {  }
   page_1:
@@ -184,5 +288,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - 'user.node_grants:view'
         - user.permissions
       tags: {  }

@@ -30,9 +30,14 @@
         "drupal/graphql": "^4.0",
         "drupal/graphql_compose": "^2.4",
         "drupal/graphql_core_schema": "^1.0",
+        "drupal/migrate_plus": "^6.0",
+        "drupal/migrate_source_csv": "^3.8",
+        "drupal/migrate_tools": "^6.1",
         "drupal/paragraphs": "^1.20",
         "drupal/pathauto": "^1.15",
         "drupal/typed_data": "^2.0",
+        "drupal/views_data_export": "^1.10",
+        "drupal/xls_serialization": "^2.1",
         "drush/drush": "^13.7"
     },
     "conflict": {

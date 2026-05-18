@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Module override for an export icon to fix styling in Gin and other themes.
+ */
+#}
+{%
+  set classes = [
+    'button',
+    'button--small',
+    'export-link',
+    'export-link--' ~ format|lower|clean_class,
+  ]
+%}
+<a href="{{ url }}"{{ attributes.addClass(classes) }}>
+  {{ format|upper }}
+</a>

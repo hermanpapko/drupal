@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Theme override for an export icon.
+ */
+#}
+{%
+  set classes = [
+    'button',
+    'button--small',
+    'export-link',
+    'export-link--' ~ format|lower|clean_class,
+  ]
+%}
+<a href="{{ url }}"{{ attributes.addClass(classes) }}>
+  {{ format|upper }}
+</a>
