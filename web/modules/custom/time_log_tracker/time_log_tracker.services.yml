@@ -2,3 +2,12 @@ services:
   plugin.manager.report_generator:
     class: Drupal\time_log_tracker\Plugin\ReportGeneratorManager
     parent: default_plugin_manager
+
+  time_log_tracker.report_email_subscriber:
+    class: Drupal\time_log_tracker\EventSubscriber\ReportEmailSubscriber
+    arguments:
+      - '@plugin.manager.mail'
+      - '@language_manager'
+      - '@renderer'
+    tags:
+      - { name: event_subscriber }

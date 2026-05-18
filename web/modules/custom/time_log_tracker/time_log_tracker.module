@@ -67,3 +67,17 @@ function time_log_tracker_preprocess_views_view_grouping(&$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_mail().
+ */
+function time_log_tracker_mail(string $key, array &$message, array $params): void {
+  switch ($key) {
+    case 'report_email':
+      $message['subject'] = t('Generated Time Log Report');
+      $message['body'][] = t('Hello,');
+      $message['body'][] = t('Here is the requested time log report:');
+      $message['body'][] = $params['message'] ?? '';
+      break;
+  }
+}
