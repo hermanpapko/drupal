@@ -29,16 +29,20 @@ character species.
 
 ## 🔗 Custom Routes
 
-The `my_helper` module defines the following routes:
+The project defines the following custom routes:
 
+### my_helper module
 - **Hello Page:** `/hello/{name}` — A simple greeting page (Default: Guest).
 - **API Settings:** `/admin/config/services/my_helper` — Configuration for the
   Rick and Morty API (Status filters, etc.).
 - **Batch Management:** `/admin/config/services/rick-and-morty-batch` — Form
   to trigger character import/delete batch processes.
-- **Time Log Settings:** `/admin/structure/my-helper-my-helper-module` —
+
+### time_log_tracker module
+- **Log Time Form:** `/log-time/{project_id}` — A custom form for logging time to a specific project.
+- **Time Log Settings:** `/admin/structure/time-log-settings` —
   Configuration for the Time Log entity.
-- **Time Log Form:** `/log-time` — A custom form for logging time.
+- **Reports:** `/admin/reports/time-logs` — Interface to generate various reports (Employee, Project).
 
 ## 🛠 Development Commands
 
